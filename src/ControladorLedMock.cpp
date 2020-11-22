@@ -32,5 +32,6 @@ class ControladorLedMock{
         led_rojo_encendido = true;
     }
 
+    
 
 };

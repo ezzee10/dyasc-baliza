@@ -4,8 +4,7 @@
 #include <string>
 #include "EstadoBuild.hpp"
 
-ConexionTravis::ConexionTravis(std::string url, std::string usuario, std::string nombre_repo, std::string token){
-    url_ = url;
+ConexionTravis::ConexionTravis(std::string usuario, std::string nombre_repo, std::string token){
     nombre_repo_ = nombre_repo;
     token_ = token;
     usuario_ = usuario;

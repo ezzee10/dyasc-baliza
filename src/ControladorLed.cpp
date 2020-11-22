@@ -5,15 +5,14 @@
 #define LED_VERDE 14
 #define LED_AMARILLO 26
 #define LED_ROJO 33
-#define DELAY_PROGRESO 300
-#define DELAY_CAMBIO_ESTADO 500
+
 
 
 ControladorLed::ControladorLed(){
     pinMode(LED_VERDE, OUTPUT);
     pinMode(LED_ROJO, OUTPUT);
     pinMode(LED_AMARILLO, OUTPUT);
-    cambiarEstadoLeds(DESCONECTADO);
+    //cambiarEstadoLeds(DESCONECTADO);
 
 }
 
@@ -24,21 +23,33 @@ void ControladorLed::apagarLeds(){
 }
 
 
-void ControladorLed::parpadearLed(int nro_led, int tiempo, int cantidadParpadeos){
+void ControladorLed::parpadearLedVerde(int tiempo, int cantidadParpadeos){
     for(int i=0; i<cantidadParpadeos; i++){
         Serial.println(LED_VERDE);
-        digitalWrite(nro_led, HIGH);
+        digitalWrite(LED_VERDE, HIGH);
         delay(tiempo);
-        digitalWrite(nro_led, LOW);
+        digitalWrite(LED_VERDE, LOW);
         delay(tiempo);
-        digitalWrite(nro_led, HIGH);
+        digitalWrite(LED_VERDE, HIGH);
+    
+    }   
+}
+
+void ControladorLed::parpadearLedRojo(int tiempo, int cantidadParpadeos){
+    for(int i=0; i<cantidadParpadeos; i++){
+        Serial.println(LED_VERDE);
+        digitalWrite(LED_ROJO, HIGH);
+        delay(tiempo);
+        digitalWrite(LED_ROJO, LOW);
+        delay(tiempo);
+        digitalWrite(LED_ROJO, HIGH);
     
     }   
 }
 
 void ControladorLed::encenderLedVerde(){
     digitalWrite(LED_VERDE, HIGH);
-     Serial.println("BUILD EXITOSO"); 
+    Serial.println("BUILD EXITOSO"); 
 }
 
 void ControladorLed::encenderLedAmarillo(){
@@ -52,41 +63,7 @@ void ControladorLed::encenderLedRojo(){
 }
 
 
-void ControladorLed::cambiarEstadoLeds(EstadoBuild estado){
-    apagarLeds();
 
-    switch(estado){
-        case DESCONECTADO :
-            encenderLedAmarillo();
-            break;
-        case PASADO : 
-            if(getEstadoAnterior() == FALLIDO){
-                parpadearLed(LED_VERDE, DELAY_CAMBIO_ESTADO, 3);
-            }
-            encenderLedVerde();
-            break;
-        case FALLIDO :
-            if(getEstadoAnterior() == PASADO){
-                parpadearLed(LED_ROJO, DELAY_CAMBIO_ESTADO, 3);
-            }
-            encenderLedRojo();       
-            break;
-        case PROGRESO :
-            parpadearLed(LED_VERDE, DELAY_PROGRESO, 4);
-            Serial.println("BUILD EN PROGRESO");
-            break;         
-    }
-
-     setEstadoAnterior(estado);
-}
-
-void ControladorLed::setEstadoAnterior(EstadoBuild nuevoEstado){
-    estado_anterior = nuevoEstado;
-}
-
-EstadoBuild ControladorLed::getEstadoAnterior(){
-    return estado_anterior;
-}
 
 
 

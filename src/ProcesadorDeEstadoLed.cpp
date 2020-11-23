@@ -14,17 +14,20 @@ void ProcesadorDeEstadoLed::cambiarEstadoLed(EstadoBuild estado){
     switch(estado){
         case DESCONECTADO :
             interface_led_->encenderLedAmarillo();
+            setEstadoAnterior(estado);
             break;
         case PASADO : 
             if(getEstadoAnterior() == FALLIDO){
                 interface_led_->parpadearLedVerde(300, 3);
             }
+            setEstadoAnterior(estado);
             interface_led_->encenderLedVerde();
             break;
         case FALLIDO :
             if(getEstadoAnterior() == PASADO){
                 interface_led_->parpadearLedRojo(300, 3);
             }
+            setEstadoAnterior(estado);
             interface_led_->encenderLedRojo();       
             break;
         case PROGRESO :
@@ -33,7 +36,7 @@ void ProcesadorDeEstadoLed::cambiarEstadoLed(EstadoBuild estado){
             break;         
     }
 
-     setEstadoAnterior(estado);
+    
 }
 
 void ProcesadorDeEstadoLed::setEstadoAnterior(EstadoBuild nuevoEstado){

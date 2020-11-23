@@ -1,16 +1,16 @@
  #include "EstadoBuild.hpp"
  #include "ControladorLed.hpp"
 
-class CambiadorDeEstadoLed{
+class ProcesadorDeEstadoLed{
 
     public: 
-    CambiadorDeEstadoLed(ControladorLed  *controlador_led);
+    ProcesadorDeEstadoLed(LedsInterface  *interface_led);
     void cambiarEstadoLed(EstadoBuild estado);
     EstadoBuild getEstadoAnterior();
     void setEstadoAnterior(EstadoBuild estado);
 
     private:
     EstadoBuild estado_anterior = DESCONECTADO;
-    ControladorLed *controlador_led_;
+    LedsInterface *interface_led_;
 };
 

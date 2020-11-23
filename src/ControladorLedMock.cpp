@@ -1,6 +1,6 @@
-#include "ControladorLed.hpp"
+ #include "LedsInterface.hpp"
 
-class ControladorLedMock{
+class ControladorLedMock: public LedsInterface{
 
     private: 
     bool led_verde_encendido;
@@ -32,6 +32,24 @@ class ControladorLedMock{
         led_rojo_encendido = true;
     }
 
-    
+    void parpadearLedVerde(int tiempo, int cantidadParpadeos){
+       
+    }
+    void parpadearLedRojo(int tiempo, int cantidadParpadeos){
+        
+    }
+
+    bool ledVerdeEncendido(){
+        return led_verde_encendido;
+    }
+
+    bool ledRojoEncendido(){
+        return led_rojo_encendido;
+    }
+
+    bool ledAmarilloEncendido(){
+        return led_amarillo_encendido;
+    }
+
 
 };

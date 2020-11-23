@@ -7,7 +7,6 @@
 #define LED_ROJO 33
 
 
-
 ControladorLed::ControladorLed(){
     pinMode(LED_VERDE, OUTPUT);
     pinMode(LED_ROJO, OUTPUT);
@@ -16,11 +15,13 @@ ControladorLed::ControladorLed(){
 
 }
 
+
 void ControladorLed::apagarLeds(){
     digitalWrite(LED_VERDE, LOW);
     digitalWrite(LED_ROJO, LOW);
     digitalWrite(LED_AMARILLO, LOW);
 }
+
 
 
 void ControladorLed::parpadearLedVerde(int tiempo, int cantidadParpadeos){

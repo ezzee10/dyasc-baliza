@@ -1,7 +1,9 @@
  #ifndef CONTROLADOR_LED_H
  #define CONTROLADOR_LED_H
 
-class ControladorLed{
+ #include "LedsInterface.hpp"
+
+class ControladorLed: public LedsInterface{
 
     public: 
     ControladorLed();

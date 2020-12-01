@@ -1,0 +1,6 @@
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/CMakeFiles/Example.dir
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/test/CMakeFiles/ExampleTests.dir
+C:/Users/homer/Documents/PlatformIO/Projects/prueba/build/test/CMakeFiles/RUN_TESTS.dir

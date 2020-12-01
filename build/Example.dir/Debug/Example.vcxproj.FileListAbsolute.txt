@@ -1,0 +1,2 @@
+C:\Users\homer\Documents\PlatformIO\Projects\prueba\build\Debug\Example.pdb
+C:\Users\homer\Documents\PlatformIO\Projects\prueba\build\Example.dir\Debug\Example.pdb

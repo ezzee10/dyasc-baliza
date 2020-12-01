@@ -10,5 +10,8 @@ class ConexionWifi{
     private: 
         std::string nombreDeRed_;
         std::string password_;
+        int cantidadIntentos = 0;
 };
+
+
 

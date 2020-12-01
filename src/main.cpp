@@ -4,7 +4,7 @@
 #include "ConexionWifi.hpp"
 #include "ConexionTravis.hpp"
 #include "ControladorLed.hpp"
-#include "ProcesadorDeEstadoLed.hpp"
+#include "ProcesadorDeEstado.hpp"
 
 const std::string nombreWifi = "Internet123";
 const std::string password = "ezequiel12345";
@@ -15,22 +15,20 @@ const std::string token = "zRb7HwgxDHQUiLjkntffsA";
 ConexionWifi *conexionWifi;
 ConexionTravis *conexionTravis;
 ControladorLed *controladorLed;
-ProcesadorDeEstadoLed *procesadorEstado;
+ProcesadorDeEstado *procesadorEstado;
 
-void setup()
-{
+void setup(){
   Serial.begin(115200);
 
   controladorLed = new ControladorLed();
-  procesadorEstado = new ProcesadorDeEstadoLed(controladorLed);
+  procesadorEstado = new ProcesadorDeEstado(controladorLed);
   conexionWifi = new ConexionWifi(nombreWifi, password);
   conexionWifi->ConectarRed();
   conexionTravis = new ConexionTravis(usuario, nombrerepo, token);
   
 }
 
-void loop()
-{
+void loop(){
   EstadoBuild estado = conexionTravis->ObtenerEstado();
-  procesadorEstado->cambiarEstadoLed(estado);
+  procesadorEstado->cambiarEstadoBuild(estado);
 }

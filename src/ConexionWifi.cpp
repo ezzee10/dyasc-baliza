@@ -17,8 +17,17 @@ void ConexionWifi::ConectarRed(){
 
     WiFi.begin(nombreDeRed_.c_str(), password_.c_str());
 
-    //while (WiFi.status() != WL_CONNECTED) {
     delay(500);
+
+    if(!EstaConectado() && cantidadIntentos < 3){
+        WiFi.begin(nombreDeRed_.c_str(), password_.c_str());
+        cantidadIntentos++;
+    }else{
+        Serial.println("La conexión WIFI no pudo establecerse");
+    }
+
+    //while (WiFi.status() != WL_CONNECTED) {
+    
     //Serial.println("Connecting to WiFi..");
     
 

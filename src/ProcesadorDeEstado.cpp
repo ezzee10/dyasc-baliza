@@ -1,14 +1,14 @@
-#include "ProcesadorDeEstadoLed.hpp"
+#include "ProcesadorDeEstado.hpp"
 #include "EstadoBuild.hpp"
 #include <Arduino.h>
 
-ProcesadorDeEstadoLed::ProcesadorDeEstadoLed(LedsInterface  *interface_led){
+ProcesadorDeEstado::ProcesadorDeEstado(LedsInterface  *interface_led){
     interface_led_ = interface_led;
-    cambiarEstadoLed(DESCONECTADO);
+    cambiarEstadoBuild(DESCONECTADO);
 }
 
 
-void ProcesadorDeEstadoLed::cambiarEstadoLed(EstadoBuild estado){
+void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
     interface_led_->apagarLeds();
 
     switch(estado){
@@ -39,10 +39,10 @@ void ProcesadorDeEstadoLed::cambiarEstadoLed(EstadoBuild estado){
     
 }
 
-void ProcesadorDeEstadoLed::setEstadoAnterior(EstadoBuild nuevoEstado){
+void ProcesadorDeEstado::setEstadoAnterior(EstadoBuild nuevoEstado){
     estado_anterior = nuevoEstado;
 }
 
-EstadoBuild ProcesadorDeEstadoLed::getEstadoAnterior(){
+EstadoBuild ProcesadorDeEstado::getEstadoAnterior(){
     return estado_anterior;
 }

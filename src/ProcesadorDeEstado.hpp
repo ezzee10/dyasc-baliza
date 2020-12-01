@@ -1,10 +1,11 @@
  #include "EstadoBuild.hpp"
  #include "ControladorLed.hpp"
+ #include "ControladorBuzzer.hpp"
 
 class ProcesadorDeEstado{
 
     public: 
-    ProcesadorDeEstado(LedsInterface  *interface_led);
+    ProcesadorDeEstado(LedsInterface  *interface_led, BuzzerInterface *interface_buzzer);
     void cambiarEstadoBuild(EstadoBuild estado);
     EstadoBuild getEstadoAnterior();
     void setEstadoAnterior(EstadoBuild estado);
@@ -12,5 +13,6 @@ class ProcesadorDeEstado{
     private:
     EstadoBuild estado_anterior = DESCONECTADO;
     LedsInterface *interface_led_;
+    BuzzerInterface *interface_buzzer_;
 };
 

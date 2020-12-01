@@ -10,7 +10,7 @@ class LedsInterface{
     virtual void encenderLedRojo() = 0;
     virtual void parpadearLedVerde(int tiempo, int cantidadParpadeos) = 0;
     virtual void parpadearLedRojo(int tiempo, int cantidadParpadeos) = 0;
-    virtual void encenderBuzzer();
+    //virtual void encenderBuzzer() = 0;
     
 };
 

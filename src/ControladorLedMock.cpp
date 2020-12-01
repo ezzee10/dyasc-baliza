@@ -18,7 +18,7 @@ class ControladorLedMock: public LedsInterface{
     void apagarLeds(){
         led_verde_encendido = false;
         led_rojo_encendido = false;
-        led_amarillo_encendido = true;
+        led_amarillo_encendido = false;
     }
 
     void encenderLedVerde(){
@@ -61,6 +61,10 @@ class ControladorLedMock: public LedsInterface{
     int cantidadParpadeosEncendidosVerdes(){
         return cantidad_encendidos_parpadeo_verde;
     }
+
+   // void encenderBuzzer(){
+
+    //}
 
 
 };

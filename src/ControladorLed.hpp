@@ -14,6 +14,7 @@ class ControladorLed: public LedsInterface{
     void encenderLedRojo();
     void parpadearLedVerde(int tiempo, int cantidadParpadeos);
     void parpadearLedRojo(int tiempo, int cantidadParpadeos);
+    void encenderBuzzer();
   //  EstadoBuild getEstadoAnterior();
   //  void setEstadoAnterior(EstadoBuild estado);
 

@@ -19,6 +19,7 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
         case PASADO : 
             if(getEstadoAnterior() == FALLIDO){
                 interface_led_->parpadearLedVerde(300, 3);
+                interface_led_->encenderBuzzer();
             }
             setEstadoAnterior(estado);
             interface_led_->encenderLedVerde();
@@ -26,6 +27,7 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
         case FALLIDO :
             if(getEstadoAnterior() == PASADO){
                 interface_led_->parpadearLedRojo(300, 3);
+                interface_led_->encenderBuzzer();
             }
             setEstadoAnterior(estado);
             interface_led_->encenderLedRojo();       

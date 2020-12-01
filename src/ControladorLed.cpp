@@ -5,9 +5,11 @@
 #define LED_VERDE 14
 #define LED_AMARILLO 26
 #define LED_ROJO 33
+#define BUZZER 27
 
 
 ControladorLed::ControladorLed(){
+    pinMode(BUZZER, OUTPUT);
     pinMode(LED_VERDE, OUTPUT);
     pinMode(LED_ROJO, OUTPUT);
     pinMode(LED_AMARILLO, OUTPUT);
@@ -61,6 +63,12 @@ void ControladorLed::encenderLedAmarillo(){
 void ControladorLed::encenderLedRojo(){
     digitalWrite(LED_ROJO, HIGH);
     Serial.println("BUILD FALLIDO");
+}
+
+void ControladorLed::encenderBuzzer(){
+    digitalWrite(BUZZER, HIGH);
+    delay(200);
+    digitalWrite(BUZZER,LOW);
 }
 
 

@@ -12,14 +12,15 @@ const std::string usuario = "ezzee10";
 const std::string nombrerepo = "dyasc-2020";
 const std::string token = "zRb7HwgxDHQUiLjkntffsA";
 
+
 ConexionWifi *conexionWifi;
 ConexionTravis *conexionTravis;
 ControladorLed *controladorLed;
 ProcesadorDeEstado *procesadorEstado;
 
 void setup(){
+ 
   Serial.begin(115200);
-
   controladorLed = new ControladorLed();
   procesadorEstado = new ProcesadorDeEstado(controladorLed);
   conexionWifi = new ConexionWifi(nombreWifi, password);
@@ -29,6 +30,7 @@ void setup(){
 }
 
 void loop(){
+ // 
   EstadoBuild estado = conexionTravis->ObtenerEstado();
   procesadorEstado->cambiarEstadoBuild(estado);
 }

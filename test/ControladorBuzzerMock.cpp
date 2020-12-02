@@ -9,7 +9,7 @@ class ControladorBuzzerMock: public BuzzerInterface{
         cantidad_de_sonidos = 0;
     }
 
-    void generarSonido(){
+    void generarSonido(int delay_ms){
         cantidad_de_sonidos++;
     }
 

@@ -1,15 +1,15 @@
-#include "ConexionWifi.hpp"
+#include "ConectorWifi.hpp"
 #include <WiFI.h>
 #include <Arduino.h>
 #include <string>
 
 
-ConexionWifi::ConexionWifi(std::string nombreDeRed, std::string password){
+ConectorWifi::ConectorWifi(std::string nombreDeRed, std::string password){
     nombreDeRed_ = nombreDeRed;
     password_ = password;
 }
 
-void ConexionWifi::ConectarRed(){
+void ConectorWifi::ConectarRed(){
 
   //  Serial.println("hola");
     Serial.println(nombreDeRed_.c_str());
@@ -33,7 +33,7 @@ void ConexionWifi::ConectarRed(){
 
 }
 
-bool ConexionWifi::EstaConectado(){
+bool ConectorWifi::EstaConectado(){
     return WiFi.status() == WL_CONNECTED;
 }
 

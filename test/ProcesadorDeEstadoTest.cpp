@@ -16,11 +16,12 @@ void tearDown(void) {
 void test_inicializa_desconectado(void){
 
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
-   // ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock);
-    
+    ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
+  
     TEST_ASSERT_FALSE(controlador_led_mock->ledVerdeEncendido());
     TEST_ASSERT_FALSE(controlador_led_mock->ledRojoEncendido());
     TEST_ASSERT_TRUE(controlador_led_mock->ledAmarilloEncendido());
+    TEST_ASSERT_EQUAL_INT(0,controlador_buzzer_mock->cantidad_de_sonidos_generados());
 };
 
 

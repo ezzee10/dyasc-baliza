@@ -1,9 +1,11 @@
+#ifndef CONECTORWIFI_H
+#define CONECTORWIFI_H
 
 #include <string>
 
-class ConexionWifi{ 
+class ConectorWifi{ 
 
-    public: ConexionWifi(std::string nombreDeRed, std::string password);
+    public: ConectorWifi(std::string nombreDeRed, std::string password);
         void ConectarRed();
         bool EstaConectado();
 
@@ -12,6 +14,8 @@ class ConexionWifi{
         std::string password_;
         int cantidadIntentos = 0;
 };
+
+#endif
 
 
 

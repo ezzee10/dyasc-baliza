@@ -4,7 +4,7 @@
 class BuzzerInterface{
     public:
     
-    virtual void generarSonido() = 0;
+    virtual void generarSonido(int delay_ms) = 0;
     
 };
 

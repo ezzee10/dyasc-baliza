@@ -28,7 +28,7 @@ EstadoBuild ConexionTravis::ObtenerEstado(){
         int fin = payload.indexOf(",", comienzo) - 1;
         String state = (payload.substring(comienzo, fin));
         Serial.println(state);
-        estado = DefinirEstado(state.c_str());
+        DefinirEstado(state.c_str());
         //Serial.println(estado);
         return estado;      
     }else{
@@ -39,13 +39,12 @@ EstadoBuild ConexionTravis::ObtenerEstado(){
 
 }
 
-EstadoBuild ConexionTravis::DefinirEstado(std::string state){
+void ConexionTravis::DefinirEstado(std::string state){
 
         std::string estadoCorrecto = "passed";
         std::string estadoIncorrecto = "failed";
         std::string estadoEnProgreso1 = "created";
         std::string estadoEnProgreso2 = "started";
-       // EstadoBuild estado = DESCONECTADO; 
 
         if(state == estadoCorrecto){
             estado = PASADO;
@@ -57,8 +56,6 @@ EstadoBuild ConexionTravis::DefinirEstado(std::string state){
             estado = DESCONECTADO;
         }
 
-       // Serial.println(estado);
-        return estado;
 }
 
 

@@ -1,10 +1,13 @@
 #include "WiFi.h"
 #include <HTTPClient.h>
 #include <Arduino.h>
-#include "ConexionWifi.hpp"
+#include "ConectorWifi.hpp"
 #include "ConexionTravis.hpp"
 #include "ControladorLed.hpp"
+#include "ControladorBuzzer.hpp"
 #include "ProcesadorDeEstado.hpp"
+#include "Baliza.hpp"
+
 
 const std::string nombreWifi = "Internet123";
 const std::string password = "ezequiel12345";
@@ -13,24 +16,26 @@ const std::string nombrerepo = "dyasc-2020";
 const std::string token = "zRb7HwgxDHQUiLjkntffsA";
 
 
-ConexionWifi *conexionWifi;
+ConectorWifi *conectorWifi;
 ConexionTravis *conexionTravis;
 ControladorLed *controladorLed;
+ControladorBuzzer *controladorBuzzer;
 ProcesadorDeEstado *procesadorEstado;
+Baliza *baliza;
 
 void setup(){
  
   Serial.begin(115200);
   controladorLed = new ControladorLed();
-  procesadorEstado = new ProcesadorDeEstado(controladorLed);
-  conexionWifi = new ConexionWifi(nombreWifi, password);
-  conexionWifi->ConectarRed();
+  controladorBuzzer = new ControladorBuzzer();
+  procesadorEstado = new ProcesadorDeEstado(controladorLed,controladorBuzzer);
+  conectorWifi = new ConectorWifi(nombreWifi, password);
   conexionTravis = new ConexionTravis(usuario, nombrerepo, token);
-  
+  baliza = new Baliza(conectorWifi, conexionTravis, procesadorEstado);
+  baliza->iniciar();
 }
 
 void loop(){
- // 
-  EstadoBuild estado = conexionTravis->ObtenerEstado();
-  procesadorEstado->cambiarEstadoBuild(estado);
+
+  baliza->consultarEstado();
 }

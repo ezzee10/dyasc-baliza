@@ -1,12 +1,16 @@
+#ifndef CONEXIONTRAVIS_H
+#define CONEXIONTRAVIS_H
+
 #include <string>
 #include "EstadoBuild.hpp"
+#include "CiInterface.hpp"
 
-class ConexionTravis{
+class ConexionTravis: public CiInterface{
 
     public: 
     ConexionTravis(std::string usuario, std::string repositorio, std::string token);
     EstadoBuild ObtenerEstado();
-    EstadoBuild DefinirEstado(std::string estado);
+    void DefinirEstado(std::string estado);
 
     private: 
     std:: string nombre_repo_;
@@ -14,3 +18,5 @@ class ConexionTravis{
     std:: string usuario_;
     EstadoBuild estado;
 };
+
+#endif

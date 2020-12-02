@@ -1,3 +1,6 @@
+#ifndef PROCESADOR_DE_ESTADO_H
+#define PROCESADOR_DE_ESTADO_H
+ 
  #include "EstadoBuild.hpp"
  #include "ControladorLed.hpp"
  #include "ControladorBuzzer.hpp"
@@ -15,4 +18,6 @@ class ProcesadorDeEstado{
     LedsInterface *interface_led_;
     BuzzerInterface *interface_buzzer_;
 };
+
+#endif
 

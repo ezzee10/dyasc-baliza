@@ -2,7 +2,7 @@
 #include <HTTPClient.h>
 #include <Arduino.h>
 #include "ConectorWifi.hpp"
-#include "ConexionTravis.hpp"
+#include "ConectorTravis.hpp"
 #include "ControladorLed.hpp"
 #include "ControladorBuzzer.hpp"
 #include "ProcesadorDeEstado.hpp"
@@ -17,7 +17,7 @@ const std::string token = "zRb7HwgxDHQUiLjkntffsA";
 
 
 ConectorWifi *conectorWifi;
-ConexionTravis *conexionTravis;
+ConectorTravis *conectorTravis;
 ControladorLed *controladorLed;
 ControladorBuzzer *controladorBuzzer;
 ProcesadorDeEstado *procesadorEstado;
@@ -30,8 +30,9 @@ void setup(){
   controladorBuzzer = new ControladorBuzzer();
   procesadorEstado = new ProcesadorDeEstado(controladorLed,controladorBuzzer);
   conectorWifi = new ConectorWifi(nombreWifi, password);
-  conexionTravis = new ConexionTravis(usuario, nombrerepo, token);
-  baliza = new Baliza(conectorWifi, conexionTravis, procesadorEstado);
+  conectorTravis = new ConectorTravis
+(usuario, nombrerepo, token);
+  baliza = new Baliza(conectorWifi, conectorTravis, procesadorEstado);
   baliza->iniciar();
 }
 

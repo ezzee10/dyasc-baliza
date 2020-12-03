@@ -1,18 +1,18 @@
  #ifndef CONTROLADOR_LED_H
  #define CONTROLADOR_LED_H
 
- #include "LedsInterface.hpp"
+ #include "LuzInterface.hpp"
 
-class ControladorLed: public LedsInterface{
+class ControladorLed: public LuzInterface{
 
     public: 
     ControladorLed();
-    void apagarLeds();
-    void encenderLedVerde();
-    void encenderLedAmarillo();
-    void encenderLedRojo();
-    void parpadearLedVerde(int tiempo, int cantidadParpadeos);
-    void parpadearLedRojo(int tiempo, int cantidadParpadeos);
+    void apagarLuces();
+    void encenderLuzVerde();
+    void encenderLuzAmarilla();
+    void encenderLuzRoja();
+    void parpadearLuzVerde(int tiempo, int cantidadParpadeos);
+    void parpadearLuzRoja(int tiempo, int cantidadParpadeos);
    // void encenderBuzzer();
 
 };

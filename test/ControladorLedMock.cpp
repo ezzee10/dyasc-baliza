@@ -1,6 +1,6 @@
- #include "LedsInterface.hpp"
+ #include "LuzInterface.hpp"
 
-class ControladorLedMock: public LedsInterface{
+class ControladorLedMock: public LuzInterface{
 
     private: 
     bool led_verde_encendido;
@@ -15,32 +15,32 @@ class ControladorLedMock: public LedsInterface{
         led_amarillo_encendido = true;
     }
 
-    void apagarLeds(){
+    void apagarLuces(){
         led_verde_encendido = false;
         led_rojo_encendido = false;
         led_amarillo_encendido = false;
     }
 
-    void encenderLedVerde(){
+    void encenderLuzVerde(){
         led_verde_encendido = true;
 
     }
 
-    void encenderLedAmarillo(){
+    void encenderLuzAmarilla(){
         led_amarillo_encendido = true;
     }
 
-    void encenderLedRojo(){
+    void encenderLuzRoja(){
         led_rojo_encendido = true;
     }
 
-    void parpadearLedVerde(int tiempo, int cantidadParpadeos){
+    void parpadearLuzVerde(int tiempo, int cantidadParpadeos){
 
         cantidad_encendidos_parpadeo_verde = cantidadParpadeos;
       
     }   
     
-    void parpadearLedRojo(int tiempo, int cantidadParpadeos){
+    void parpadearLuzRoja(int tiempo, int cantidadParpadeos){
         cantidad_encendidos_parpadeo_rojo = cantidadParpadeos;
     }
 

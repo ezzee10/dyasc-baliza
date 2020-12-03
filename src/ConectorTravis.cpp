@@ -1,17 +1,17 @@
-#include "ConexionTravis.hpp"
+#include "ConectorTravis.hpp"
 #include <HTTPClient.h>
 #include <Arduino.h>
 #include <string>
 #include "EstadoBuild.hpp"
 
-ConexionTravis::ConexionTravis(std::string usuario, std::string nombre_repo, std::string token){
+ConectorTravis::ConectorTravis(std::string usuario, std::string nombre_repo, std::string token){
     nombre_repo_ = nombre_repo;
     token_ = token;
     usuario_ = usuario;
     estado = DESCONECTADO;
 }
 
-EstadoBuild ConexionTravis::ObtenerEstado(){
+EstadoBuild ConectorTravis::ObtenerEstado(){
     HTTPClient http;
     std::string url_concat = "https://api.travis-ci.com/repo/" + usuario_ + "%2F" + nombre_repo_ + "/branch/master";
     std::string token_concat = "token " + token_;
@@ -40,7 +40,7 @@ EstadoBuild ConexionTravis::ObtenerEstado(){
 }
 
 
-void ConexionTravis::DefinirEstado(std::string state){
+void ConectorTravis::DefinirEstado(std::string state){
 
         std::string estadoCorrecto = "passed";
         std::string estadoIncorrecto = "failed";

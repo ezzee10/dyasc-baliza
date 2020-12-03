@@ -5,10 +5,10 @@
 #include "EstadoBuild.hpp"
 #include "CiInterface.hpp"
 
-class ConexionTravis: public CiInterface{
+class ConectorTravis: public CiInterface{
 
     public: 
-    ConexionTravis(std::string usuario, std::string repositorio, std::string token);
+    ConectorTravis(std::string usuario, std::string repositorio, std::string token);
     EstadoBuild ObtenerEstado();
     void DefinirEstado(std::string estado);
 

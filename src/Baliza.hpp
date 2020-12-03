@@ -1,6 +1,6 @@
 #include "WiFi.h"
 #include "ConectorWifi.hpp"
-#include "ConexionTravis.hpp"
+#include "ConectorTravis.hpp"
 #include "ProcesadorDeEstado.hpp"
 
 class Baliza{

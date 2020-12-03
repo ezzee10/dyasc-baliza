@@ -8,14 +8,14 @@
 class ProcesadorDeEstado{
 
     public: 
-    ProcesadorDeEstado(LedsInterface  *interface_led, BuzzerInterface *interface_buzzer);
+    ProcesadorDeEstado(LuzInterface  *interface_luz, BuzzerInterface *interface_buzzer);
     void cambiarEstadoBuild(EstadoBuild estado);
     EstadoBuild getEstadoAnterior();
     void setEstadoAnterior(EstadoBuild estado);
 
     private:
     EstadoBuild estado_anterior = DESCONECTADO;
-    LedsInterface *interface_led_;
+    LuzInterface *interface_luz_;
     BuzzerInterface *interface_buzzer_;
 };
 

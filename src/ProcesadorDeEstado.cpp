@@ -2,42 +2,42 @@
 #include "EstadoBuild.hpp"
 #include <Arduino.h>
 
-ProcesadorDeEstado::ProcesadorDeEstado(LedsInterface  *interface_led, BuzzerInterface *buzzer_interface){
-    interface_led_ = interface_led;
+ProcesadorDeEstado::ProcesadorDeEstado(LuzInterface  *interface_luz, BuzzerInterface *buzzer_interface){
+    interface_luz_ = interface_luz;
     interface_buzzer_ = buzzer_interface;
     cambiarEstadoBuild(DESCONECTADO);
 }
 
 
 void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
-    interface_led_->apagarLeds();
+    interface_luz_->apagarLuces();
 
     switch(estado){
         case DESCONECTADO :
-            interface_led_->encenderLedAmarillo();
+            interface_luz_->encenderLuzAmarilla();
             setEstadoAnterior(estado);
             break;
         case PASADO : 
             if(getEstadoAnterior() == FALLIDO){
-                interface_led_->parpadearLedVerde(300, 3);
+                interface_luz_->parpadearLuzVerde(300, 3);
                 interface_buzzer_->generarSonido(300);
             }
             setEstadoAnterior(estado);
-            interface_led_->encenderLedVerde();
+            interface_luz_->encenderLuzVerde();
             break;
         case FALLIDO :
             if(getEstadoAnterior() == PASADO){
-                interface_led_->parpadearLedRojo(300, 3);
+                interface_luz_->parpadearLuzRoja(300, 3);
                 interface_buzzer_->generarSonido(300);
             }
             setEstadoAnterior(estado);
-            interface_led_->encenderLedRojo();       
+            interface_luz_->encenderLuzRoja();       
             break;
         case PROGRESO :
             if(getEstadoAnterior() == PASADO){
-                interface_led_->parpadearLedVerde(500, 4);
+                interface_luz_->parpadearLuzVerde(500, 4);
             }else{
-                interface_led_->parpadearLedRojo(500,4);
+                interface_luz_->parpadearLuzRoja(500,4);
             }    
             Serial.println("BUILD EN PROGRESO");
             break;         

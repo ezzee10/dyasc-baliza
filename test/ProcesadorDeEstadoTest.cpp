@@ -118,15 +118,30 @@ void test_cambio_estado_desconectado_a_fallido(){
 };
 
 
-void test_build_en_progreso_parpadea_led_verde(){
+void test_build_en_progreso_exitoso_parpadea_led_verde(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
+    procesador_de_estado->cambiarEstadoBuild(PASADO);
     procesador_de_estado->cambiarEstadoBuild(PROGRESO);
     
     TEST_ASSERT_EQUAL_INT(4,controlador_led_mock->cantidadParpadeosEncendidosVerdes());
-
+    TEST_ASSERT_FALSE(controlador_led_mock->ledRojoEncendido());
+    TEST_ASSERT_FALSE(controlador_led_mock->ledAmarilloEncendido());
 };
+
+void test_build_en_progreso_fallido_parpadea_led_rojo(){
+    ControladorLedMock *controlador_led_mock = new ControladorLedMock();
+    ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
+    ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
+    procesador_de_estado->cambiarEstadoBuild(FALLIDO);
+    procesador_de_estado->cambiarEstadoBuild(PROGRESO);
+    
+    TEST_ASSERT_EQUAL_INT(4,controlador_led_mock->cantidadParpadeosEncendidosRojos());
+    TEST_ASSERT_FALSE(controlador_led_mock->ledVerdeEncendido());
+    TEST_ASSERT_FALSE(controlador_led_mock->ledAmarilloEncendido());
+};
+
 
 void test_exitoso_a_fallido_suena_buzzer(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
@@ -177,7 +192,8 @@ void setup()
     RUN_TEST(test_cambio_estado_pasado_a_desconectado);
     RUN_TEST(test_cambio_estado_desconectado_a_pasado);
     RUN_TEST(test_cambio_estado_desconectado_a_fallido);
-    RUN_TEST(test_build_en_progreso_parpadea_led_verde);
+    RUN_TEST(test_build_en_progreso_exitoso_parpadea_led_verde);
+    RUN_TEST(test_build_en_progreso_fallido_parpadea_led_rojo);
     RUN_TEST(test_exitoso_a_fallido_suena_buzzer);
     RUN_TEST(test_exitoso_a_fallido_a_exitoso_suena_buzzer);
     RUN_TEST(test_fallido_a_exitoso_a_fallido_a_exitoso_suena_buzzer);

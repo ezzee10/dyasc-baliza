@@ -36,14 +36,12 @@ class ControladorLedMock: public LedsInterface{
 
     void parpadearLedVerde(int tiempo, int cantidadParpadeos){
 
-      for(int i=0; i<cantidadParpadeos; i++){
-          cantidad_encendidos_parpadeo_verde++;
-      }
+        cantidad_encendidos_parpadeo_verde = cantidadParpadeos;
       
     }   
     
     void parpadearLedRojo(int tiempo, int cantidadParpadeos){
-    
+        cantidad_encendidos_parpadeo_rojo = cantidadParpadeos;
     }
 
     bool ledVerdeEncendido(){
@@ -62,9 +60,8 @@ class ControladorLedMock: public LedsInterface{
         return cantidad_encendidos_parpadeo_verde;
     }
 
-   // void encenderBuzzer(){
-
-    //}
-
+    int cantidadParpadeosEncendidosRojos(){
+        return cantidad_encendidos_parpadeo_rojo;
+    }
 
 };

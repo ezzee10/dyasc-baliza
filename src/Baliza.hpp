@@ -15,8 +15,6 @@ class Baliza{
     private: 
     ConectorWifi *conectorWifi_;
     CiInterface *CiInterface_;
-    ControladorLed *controladorLed_;
-    ControladorBuzzer *controladorBuzzer_;
     ProcesadorDeEstado *procesadorEstado_;
     EstadoBuild estado;
 };

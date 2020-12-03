@@ -21,7 +21,6 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
             if(getEstadoAnterior() == FALLIDO){
                 interface_led_->parpadearLedVerde(300, 3);
                 interface_buzzer_->generarSonido(300);
-             //   interface_led_->encenderBuzzer();
             }
             setEstadoAnterior(estado);
             interface_led_->encenderLedVerde();
@@ -30,13 +29,16 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
             if(getEstadoAnterior() == PASADO){
                 interface_led_->parpadearLedRojo(300, 3);
                 interface_buzzer_->generarSonido(300);
-            //    interface_led_->encenderBuzzer();
             }
             setEstadoAnterior(estado);
             interface_led_->encenderLedRojo();       
             break;
         case PROGRESO :
-            interface_led_->parpadearLedVerde(500, 4);
+            if(getEstadoAnterior() == PASADO){
+                interface_led_->parpadearLedVerde(500, 4);
+            }else{
+                interface_led_->parpadearLedRojo(500,4);
+            }    
             Serial.println("BUILD EN PROGRESO");
             break;         
     }

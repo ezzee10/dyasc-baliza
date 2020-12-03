@@ -19,7 +19,7 @@ EstadoBuild ConexionTravis::ObtenerEstado(){
     http.addHeader("Travis-API-Version", "3");
     http.addHeader("Authorization",  token_concat.c_str());
     int httpCode = http.GET();
-    Serial.println(httpCode);
+    //Serial.println(httpCode);
 
     if (httpCode > 0){ 
         String payload = http.getString();
@@ -38,6 +38,7 @@ EstadoBuild ConexionTravis::ObtenerEstado(){
     }
 
 }
+
 
 void ConexionTravis::DefinirEstado(std::string state){
 

@@ -11,7 +11,6 @@ ConectorWifi::ConectorWifi(std::string nombreDeRed, std::string password){
 
 void ConectorWifi::ConectarRed(){
 
-  //  Serial.println("hola");
     Serial.println(nombreDeRed_.c_str());
     Serial.println(password_.c_str());
 
@@ -25,11 +24,6 @@ void ConectorWifi::ConectarRed(){
     }else{
         Serial.println("La conexión WIFI no pudo establecerse");
     }
-
-    //while (WiFi.status() != WL_CONNECTED) {
-    
-    //Serial.println("Connecting to WiFi..");
-    
 
 }
 

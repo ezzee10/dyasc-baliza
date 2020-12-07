@@ -2,9 +2,9 @@
 #include "EstadoBuild.hpp"
 #include <Arduino.h>
 
-ProcesadorDeEstado::ProcesadorDeEstado(LuzInterface  *interface_luz, BuzzerInterface *buzzer_interface){
+ProcesadorDeEstado::ProcesadorDeEstado(LuzInterface  *interface_luz, SonidoInterface *sonido_interface){
     interface_luz_ = interface_luz;
-    interface_buzzer_ = buzzer_interface;
+    interface_sonido_ = sonido_interface;
     cambiarEstadoBuild(DESCONECTADO);
 }
 
@@ -20,7 +20,7 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
         case PASADO : 
             if(getEstadoAnterior() == FALLIDO){
                 interface_luz_->parpadearLuzVerde(300, 3);
-                interface_buzzer_->generarSonido(300);
+                interface_sonido_->generarSonido(300);
             }
             setEstadoAnterior(estado);
             interface_luz_->encenderLuzVerde();
@@ -28,7 +28,7 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
         case FALLIDO :
             if(getEstadoAnterior() == PASADO){
                 interface_luz_->parpadearLuzRoja(300, 3);
-                interface_buzzer_->generarSonido(300);
+                interface_sonido_->generarSonido(300);
             }
             setEstadoAnterior(estado);
             interface_luz_->encenderLuzRoja();       

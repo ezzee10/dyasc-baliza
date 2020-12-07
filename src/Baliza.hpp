@@ -1,3 +1,6 @@
+#ifndef BALIZA_H
+#define BALIZA_H
+
 #include "WiFi.h"
 #include "ConectorWifi.hpp"
 #include "ConectorTravis.hpp"
@@ -18,3 +21,5 @@ class Baliza{
     ProcesadorDeEstado *procesadorEstado_;
     EstadoBuild estado;
 };
+
+#endif

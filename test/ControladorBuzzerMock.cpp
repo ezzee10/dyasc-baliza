@@ -1,6 +1,6 @@
- #include "BuzzerInterface.hpp"
+ #include "SonidoInterface.hpp"
 
-class ControladorBuzzerMock: public BuzzerInterface{
+class ControladorBuzzerMock: public SonidoInterface{
 
     private: 
     int cantidad_de_sonidos;
@@ -9,7 +9,7 @@ class ControladorBuzzerMock: public BuzzerInterface{
         cantidad_de_sonidos = 0;
     }
 
-    void generarSonido(int delay_ms){
+    void generarSonido(int tiempo){
         cantidad_de_sonidos++;
     }
 

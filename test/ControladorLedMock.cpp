@@ -10,9 +10,11 @@ class ControladorLedMock: public LuzInterface{
     int cantidad_encendidos_parpadeo_rojo = 0;
 
     public: ControladorLedMock(){
+        
         led_verde_encendido = false;
         led_rojo_encendido = false;
         led_amarillo_encendido = true;
+        
     }
 
     void apagarLuces(){

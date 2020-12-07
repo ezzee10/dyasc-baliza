@@ -1,13 +1,13 @@
  #ifndef CONTROLADOR_BUZZER_H
  #define CONTROLADOR_BUZZER_H
 
- #include "BuzzerInterface.hpp"
+ #include "SonidoInterface.hpp"
 
-class ControladorBuzzer: public BuzzerInterface{
+class ControladorBuzzer: public SonidoInterface{
 
     public: 
     ControladorBuzzer();
-    void generarSonido(int delay_ms);
+    void generarSonido(int tiempo);
 
   
 };

@@ -1,4 +1,5 @@
 #include "EstadoBuild.hpp"
+#include <string>
 
 class CiInterface{
     public:

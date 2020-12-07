@@ -7,9 +7,9 @@ ControladorBuzzer::ControladorBuzzer(){
     pinMode(BUZZER, OUTPUT);
 }
 
-void ControladorBuzzer::generarSonido(int delay_ms){
+void ControladorBuzzer::generarSonido(int tiempo){
     digitalWrite(BUZZER, HIGH);
-    delay(delay_ms);
+    delay(tiempo);
     digitalWrite(BUZZER, LOW);
 }
 

@@ -15,8 +15,8 @@
 
     void Baliza::consultarEstado(){
           if(conectorWifi_->EstaConectado()){
-           estado = CiInterface_->ObtenerEstado();
-           procesadorEstado_->cambiarEstadoBuild(estado);
+            estado = CiInterface_->ObtenerEstado();
+            procesadorEstado_->cambiarEstadoBuild(estado);
         }else{
             iniciar();
         }

@@ -40,3 +40,5 @@ void loop(){
 
   baliza->consultarEstado();
 }
+
+

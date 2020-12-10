@@ -31,7 +31,7 @@ void test_estado_correcto_luz_verde_encendida(void){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
 
     TEST_ASSERT_TRUE(controlador_led_mock->ledVerdeEncendido());
     TEST_ASSERT_FALSE(controlador_led_mock->ledRojoEncendido());
@@ -57,7 +57,7 @@ void test_cambio_estado_pasado_a_fallido(void){
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
 
     TEST_ASSERT_TRUE(controlador_led_mock->ledVerdeEncendido());
     TEST_ASSERT_FALSE(controlador_led_mock->ledRojoEncendido());
@@ -69,7 +69,7 @@ void test_cambio_estado_fallido_a_pasado(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
 
     TEST_ASSERT_FALSE(controlador_led_mock->ledVerdeEncendido());
@@ -82,7 +82,7 @@ void test_cambio_estado_pasado_a_desconectado(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(DESCONECTADO);
 
     TEST_ASSERT_FALSE(controlador_led_mock->ledVerdeEncendido());
@@ -96,7 +96,7 @@ void test_cambio_estado_desconectado_a_pasado(){
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
     procesador_de_estado->cambiarEstadoBuild(DESCONECTADO);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     
     TEST_ASSERT_TRUE(controlador_led_mock->ledVerdeEncendido());
     TEST_ASSERT_FALSE(controlador_led_mock->ledRojoEncendido());
@@ -109,7 +109,7 @@ void test_cambio_estado_desconectado_a_fallido(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
 
     TEST_ASSERT_FALSE(controlador_led_mock->ledVerdeEncendido());
@@ -123,7 +123,7 @@ void test_build_en_progreso_exitoso_parpadea_led_verde(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(PROGRESO);
     
     TEST_ASSERT_EQUAL_INT(4,controlador_led_mock->cantidadParpadeosEncendidosVerdes());
@@ -148,7 +148,7 @@ void test_exitoso_a_fallido_suena_buzzer(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
     
     TEST_ASSERT_EQUAL_INT(1,controlador_buzzer_mock->cantidad_de_sonidos_generados());
@@ -159,9 +159,9 @@ void test_exitoso_a_fallido_a_exitoso_suena_buzzer(){
     ControladorLedMock *controlador_led_mock = new ControladorLedMock();
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     
     TEST_ASSERT_EQUAL_INT(2,controlador_buzzer_mock->cantidad_de_sonidos_generados());
 
@@ -172,9 +172,9 @@ void test_fallido_a_exitoso_a_fallido_a_exitoso_suena_buzzer(){
     ControladorBuzzerMock *controlador_buzzer_mock = new ControladorBuzzerMock();
     ProcesadorDeEstado *procesador_de_estado = new ProcesadorDeEstado(controlador_led_mock, controlador_buzzer_mock);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     procesador_de_estado->cambiarEstadoBuild(FALLIDO);
-    procesador_de_estado->cambiarEstadoBuild(PASADO);
+    procesador_de_estado->cambiarEstadoBuild(EXITOSO);
     
     TEST_ASSERT_EQUAL_INT(3,controlador_buzzer_mock->cantidad_de_sonidos_generados());
 

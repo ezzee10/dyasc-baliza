@@ -17,24 +17,24 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
             interface_luz_->encenderLuzAmarilla();
             setEstadoAnterior(estado);
             break;
-        case PASADO : 
+        case EXITOSO : 
             if(getEstadoAnterior() == FALLIDO){
-                interface_luz_->parpadearLuzVerde(300, 3);
-                interface_sonido_->generarSonido(300);
+                interface_luz_->parpadearLuzVerde(200, 3);
+                interface_sonido_->generarSonido(200);
             }
             setEstadoAnterior(estado);
             interface_luz_->encenderLuzVerde();
             break;
         case FALLIDO :
-            if(getEstadoAnterior() == PASADO){
-                interface_luz_->parpadearLuzRoja(300, 3);
-                interface_sonido_->generarSonido(300);
+            if(getEstadoAnterior() == EXITOSO){
+                interface_luz_->parpadearLuzRoja(200, 3);
+                interface_sonido_->generarSonido(200);
             }
             setEstadoAnterior(estado);
             interface_luz_->encenderLuzRoja();       
             break;
         case PROGRESO :
-            if(getEstadoAnterior() == PASADO){
+            if(getEstadoAnterior() == EXITOSO){
                 interface_luz_->parpadearLuzVerde(500, 4);
             }else{
                 interface_luz_->parpadearLuzRoja(500,4);

@@ -17,7 +17,7 @@ class ConectorCiMock: public CiInterface{
     void DefinirEstado(std::string estado){
 
         if(estado == "passed"){
-            estado_ = PASADO;
+            estado_ = EXITOSO;
         }else if(estado == "failed"){
             estado_ = FALLIDO;
         }else if(estado == "created" || estado == "started"){

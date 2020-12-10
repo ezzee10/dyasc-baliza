@@ -1,3 +1,4 @@
+
 #include "EstadoBuild.hpp"
 #include <string>
 
@@ -8,4 +9,9 @@ class CiInterface{
     virtual void DefinirEstado(std::string estado) = 0;
 
 };
+
+
+
+
+
 

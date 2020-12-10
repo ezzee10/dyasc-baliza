@@ -18,11 +18,11 @@ void ConectorWifi::ConectarRed(){
 
     delay(500);
 
-    if(!EstaConectado() && cantidadIntentos < 3){
+    if(!EstaConectado()){
         WiFi.begin(nombreDeRed_.c_str(), password_.c_str());
-        cantidadIntentos++;
-    }else{
         Serial.println("La conexión WIFI no pudo establecerse");
+    }else{
+        Serial.println("La conexión WIFI fue establecida");
     }
 
 }

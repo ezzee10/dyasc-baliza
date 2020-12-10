@@ -23,13 +23,11 @@ EstadoBuild ConectorTravis::ObtenerEstado(){
 
     if (httpCode > 0){ 
         String payload = http.getString();
-        //Serial.println(payload);
         int comienzo = payload.indexOf("state") + 9;
         int fin = payload.indexOf(",", comienzo) - 1;
         String state = (payload.substring(comienzo, fin));
         Serial.println(state);
         DefinirEstado(state.c_str());
-        //Serial.println(estado);
         return estado;      
     }else{
         http.end();
@@ -48,7 +46,7 @@ void ConectorTravis::DefinirEstado(std::string state){
         std::string estadoEnProgreso2 = "started";
 
         if(state == estadoCorrecto){
-            estado = PASADO;
+            estado = EXITOSO;
         }else if(state == estadoIncorrecto){
             estado = FALLIDO;
         }else if(state == estadoEnProgreso1 || state == estadoEnProgreso2){
@@ -58,5 +56,8 @@ void ConectorTravis::DefinirEstado(std::string state){
         }
 
 }
+
+
+
 
 

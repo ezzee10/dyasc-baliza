@@ -20,3 +20,4 @@ class ConectorTravis: public CiInterface{
 };
 
 #endif
+

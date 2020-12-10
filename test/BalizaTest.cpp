@@ -1,18 +1,19 @@
-#include "ProcesadorDeEstado.cpp"
+
+#include "ProcesadorDeEstado.hpp"
 #include "ControladorLedMock.cpp"
 #include "ControladorBuzzerMock.cpp"
 #include "ConectorCiMock.cpp"
 #include <unity.h>
 #include <Arduino.h>
-/*
 
-void setUp(void) {
+
+//void setUp(void) {
     // set stuff up here
-}
+//}
 
-void tearDown(void) {
+//void tearDown(void) {
     // clean stuff up here
-}
+//}
 
 void test_baliza_desconectada(void){
 
@@ -84,7 +85,7 @@ void test_baliza_build_progreso(void){
 
 
 
-
+/*
 
 void setup()
 {
@@ -98,4 +99,5 @@ void setup()
 
 void loop(){
 }
+
 */

@@ -39,7 +39,6 @@ void ProcesadorDeEstado::cambiarEstadoBuild(EstadoBuild estado){
             }else{
                 interface_luz_->parpadearLuzRoja(500,4);
             }    
-            Serial.println("BUILD EN PROGRESO");
             break;         
     }
 

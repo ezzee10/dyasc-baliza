@@ -13,7 +13,6 @@ class ControladorLed: public LuzInterface{
     void encenderLuzRoja();
     void parpadearLuzVerde(int tiempo, int cantidadParpadeos);
     void parpadearLuzRoja(int tiempo, int cantidadParpadeos);
-   // void encenderBuzzer();
 
 };
 

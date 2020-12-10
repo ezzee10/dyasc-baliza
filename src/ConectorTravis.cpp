@@ -19,14 +19,12 @@ EstadoBuild ConectorTravis::ObtenerEstado(){
     http.addHeader("Travis-API-Version", "3");
     http.addHeader("Authorization",  token_concat.c_str());
     int httpCode = http.GET();
-    //Serial.println(httpCode);
 
     if (httpCode > 0){ 
         String payload = http.getString();
         int comienzo = payload.indexOf("state") + 9;
         int fin = payload.indexOf(",", comienzo) - 1;
         String state = (payload.substring(comienzo, fin));
-        Serial.println(state);
         DefinirEstado(state.c_str());
         return estado;      
     }else{

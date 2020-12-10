@@ -28,9 +28,6 @@ void ControladorLed::parpadearLuzVerde(int tiempo, int cantidadParpadeos){
         digitalWrite(LED_VERDE, HIGH);
         delay(tiempo);
         digitalWrite(LED_VERDE, LOW);
-        //delay(tiempo);
-        //digitalWrite(LED_VERDE, HIGH);
-    
     }   
 }
 
@@ -38,10 +35,7 @@ void ControladorLed::parpadearLuzRoja(int tiempo, int cantidadParpadeos){
     for(int i=0; i<cantidadParpadeos; i++){
         digitalWrite(LED_ROJO, HIGH);
         delay(tiempo);
-        digitalWrite(LED_ROJO, LOW);
-        //delay(tiempo);
-        //digitalWrite(LED_ROJO, HIGH);
-    
+        digitalWrite(LED_ROJO, LOW); 
     }   
 }
 
